@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Autorização · Miudezas da História</title>
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<header>
+  <img src="logo.png" alt="Mascote do Miudezas da História">
+  <div><h1>Autorização recebida</h1><div class="muted">Esta página não envia nada a lugar nenhum.</div></div>
+</header>
+<div class="card" id="out">Carregando…</div>
+<p class="muted">Copie o endereço desta página (barra de endereço) e cole no terminal da ferramenta de publicação. O código vale por poucos minutos.</p>
+<script>
+  const p = new URLSearchParams(location.search);
+  const out = document.getElementById('out');
+  if (p.get('error')) {
+    out.textContent = 'A plataforma recusou a autorização: ' + p.get('error') + ' ' + (p.get('error_description') || '');
+  } else if (p.get('code')) {
+    out.textContent = 'Código recebido. Volte ao terminal e cole o endereço desta página.';
+  } else {
+    out.textContent = 'Nenhum código nesta página.';
+  }
+</script>
+</main>
+</body>
+</html>
